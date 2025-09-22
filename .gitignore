@@ -1,13 +1,31 @@
+# Xcode
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+
+# SwiftPM
+.build/
+
 # CocoaPods
 Pods/
 Podfile.lock
 
-# Xcode
-DerivedData/
-*.xcworkspace/xcuserdata/
-*.xcuserstate
-*.xcscmblueprint
+# Carthage
+Carthage/Build/
 
-# Build
-build/
-*.xcarchive
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Bitrise cache
+.bitrise-*
+
+# Other
+*.swp
+*.xcworkspace/xcuserdata

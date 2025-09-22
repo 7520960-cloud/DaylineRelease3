@@ -1,52 +1,44 @@
 import SwiftUI
 
 struct AuthView: View {
-    @State private var email: String = ""
+    @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoggedIn: Bool = false
-    
+    @State private var isLoggedIn = false
+
     var body: some View {
-        NavigationView {
+        if isLoggedIn {
+            Text("Добро пожаловать, \(username)!")
+                .font(.title)
+                .padding()
+        } else {
             VStack(spacing: 20) {
-                Text("Добро пожаловать в Dayline")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                
-                TextField("Email", text: $email)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                
+                Text("Вход в приложение")
+                    .font(.largeTitle)
+                    .bold()
+
+                TextField("Логин", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+
                 SecureField("Пароль", text: $password)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+
                 Button(action: {
-                    // пока делаем заглушку
-                    if !email.isEmpty && !password.isEmpty {
+                    // Простая проверка (заглушка)
+                    if !username.isEmpty && !password.isEmpty {
                         isLoggedIn = true
                     }
                 }) {
                     Text("Войти")
-                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.blue)
-                        .cornerRadius(8)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                 }
-                
-                NavigationLink(
-                    destination: Text("Главный экран (заглушка)"),
-                    isActive: $isLoggedIn
-                ) { EmptyView() }
-                
-                Spacer()
             }
-            .padding()
         }
     }
 }

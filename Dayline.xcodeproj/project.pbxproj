@@ -1,10 +1,151 @@
 // !$*UTF8*$!
 {
-  archiveVersion = 1;
-  classes = {};
-  objectVersion = 50;
-  objects = {
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
 
-  };
-  rootObject = 1;
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60589A0D05DD56006BFB54 /* App.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D60589A0D05DD56006BFB54 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		1D60589F0D05DD5A006BFB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1D60589E0D05DD5A006BFB54 = {
+			isa = PBXGroup;
+			children = (
+				1D60589A0D05DD56006BFB54 /* App.swift */,
+				1D60589F0D05DD5A006BFB54 /* Info.plist */,
+			);
+			path = "";
+			sourceTree = "<group>";
+		};
+		080E96D41FE20E6D00000000 = {
+			isa = PBXGroup;
+			children = (
+				1D60589E0D05DD5A006BFB54,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058930D05DD56006BFB54 /* DaylineApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXNativeTarget "DaylineApp" */;
+			buildPhases = (
+				1D60588D0D05DD56006BFB54 /* Sources */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = DaylineApp;
+			productName = DaylineApp;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1640;
+				ORGANIZATIONNAME = "7520960-cloud";
+				TargetAttributes = {
+					1D6058930D05DD56006BFB54 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXProject "Dayline" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 080E96D41FE20E6D00000000;
+			productRefGroup = 1D6058960D05DD56006BFB54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058930D05DD56006BFB54 /* DaylineApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588D0D05DD56006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXProject "Dayline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXNativeTarget "DaylineApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

@@ -7,11 +7,13 @@
 
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60589A0D05DD56006BFB54 /* App.swift */; };
+		ABCD12345678900000000001 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD12345678900000000000 /* AuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D60589A0D05DD56006BFB54 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		1D60589F0D05DD5A006BFB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCD12345678900000000000 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI/Auth/AuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -19,6 +21,7 @@
 			isa = PBXGroup;
 			children = (
 				1D60589A0D05DD56006BFB54 /* App.swift */,
+				ABCD12345678900000000000 /* AuthView.swift */,
 				1D60589F0D05DD5A006BFB54 /* Info.plist */,
 			);
 			path = "";
@@ -83,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* App.swift in Sources */,
+				ABCD12345678900000000001 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,13 +1,13 @@
-# Xcode
-DerivedData/
-build/
-*.xcworkspace
-xcuserdata/
-.DS_Store
-
 # CocoaPods
 Pods/
 Podfile.lock
 
-# Firebase config (не пушим в git, добавляем на Bitrise вручную)
-GoogleService-Info.plist
+# Xcode
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Build
+build/
+*.xcarchive

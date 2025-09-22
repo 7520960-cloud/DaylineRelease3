@@ -3,18 +3,14 @@ import SwiftUI
 struct AuthView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoggedIn = false
+    @State private var isLoggedIn: Bool = false
 
     var body: some View {
-        if isLoggedIn {
-            Text("Добро пожаловать, \(username)!")
-                .font(.title)
-                .padding()
-        } else {
+        NavigationView {
             VStack(spacing: 20) {
-                Text("Вход в приложение")
-                    .font(.largeTitle)
-                    .bold()
+                Text("Добро пожаловать в Dayline")
+                    .font(.title)
+                    .fontWeight(.bold)
 
                 TextField("Логин", text: $username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -25,7 +21,7 @@ struct AuthView: View {
                     .padding(.horizontal)
 
                 Button(action: {
-                    // Простая проверка (заглушка)
+                    // Временная логика входа
                     if !username.isEmpty && !password.isEmpty {
                         isLoggedIn = true
                     }
@@ -36,9 +32,23 @@ struct AuthView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                        .padding(.horizontal)
+                }
+                .padding(.horizontal)
+
+                NavigationLink(destination: MainView(), isActive: $isLoggedIn) {
+                    EmptyView()
                 }
             }
+            .padding()
         }
+    }
+}
+
+struct MainView: View {
+    var body: some View {
+        Text("Главный экран Dayline ✅")
+            .font(.largeTitle)
+            .fontWeight(.semibold)
+            .padding()
     }
 }

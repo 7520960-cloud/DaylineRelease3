@@ -1,25 +1,15 @@
-format_version: "11"
+format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 workflows:
   primary:
     steps:
-    - activate-ssh-key@4: {}
-    - git-clone@8: {}
-    - cache-pull@2: {}
-
-    # Установка CocoaPods
-    - cocoapods-install@2:
-        inputs:
-        - podfile_path: "./Podfile"
-
-    # Сборка под симулятор
-    - xcode-test@2:
-        inputs:
-        - project_path: "Dayline.xcodeproj"
-        - scheme: "DaylineApp"
-        - simulator_device: "iPhone 14"
-        - simulator_os_version: "17.0"
-        - is_clean_build: "yes"
-
-    - cache-push@2: {}
+      - git-clone: {}
+      - cocoapods-install@2:
+          inputs:
+            - podfile_path: "./Podfile"
+      - xcode-build-for-simulator@0:
+          inputs:
+            - project_path: "Dayline.xcworkspace"
+            - scheme: "DaylineApp"
+            - destination: "platform=iOS Simulator,name=iPhone 15,OS=17.5"

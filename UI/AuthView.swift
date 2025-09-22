@@ -3,62 +3,33 @@ import SwiftUI
 struct AuthView: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var selectedLanguage: String = "Русский"
-    @State private var isSecure: Bool = true
-    
-    let languages = ["Русский", "Українська", "English"]
+    @State private var isLoggedIn: Bool = false
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                // Заголовок
-                Text("Dayline")
-                    .font(.system(size: 34, weight: .bold))
+                Text("Добро пожаловать в Dayline")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
                 
-                // Выбор языка
-                Picker("Язык", selection: $selectedLanguage) {
-                    ForEach(languages, id: \.self) { lang in
-                        Text(lang)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
-                
-                // Поле e-mail
                 TextField("Email", text: $email)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
+                
+                SecureField("Пароль", text: $password)
                     .padding()
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color(.secondarySystemBackground))
                     .cornerRadius(8)
-                    .padding(.horizontal)
                 
-                // Поле пароль
-                Group {
-                    if isSecure {
-                        SecureField("Пароль", text: $password)
-                    } else {
-                        TextField("Пароль", text: $password)
-                    }
-                }
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .overlay(
-                    HStack {
-                        Spacer()
-                        Button(action: { isSecure.toggle() }) {
-                            Image(systemName: isSecure ? "eye.slash" : "eye")
-                                .foregroundColor(.gray)
-                        }
-                        .padding(.trailing, 30)
-                    }
-                )
-                
-                // Кнопка входа
                 Button(action: {
-                    // TODO: добавить логику авторизации
+                    // пока делаем заглушку
+                    if !email.isEmpty && !password.isEmpty {
+                        isLoggedIn = true
+                    }
                 }) {
                     Text("Войти")
                         .foregroundColor(.white)
@@ -67,51 +38,15 @@ struct AuthView: View {
                         .background(Color.blue)
                         .cornerRadius(8)
                 }
-                .padding(.horizontal)
                 
-                // Разделитель
-                HStack {
-                    Rectangle().frame(height: 1).foregroundColor(.gray)
-                    Text("или")
-                    Rectangle().frame(height: 1).foregroundColor(.gray)
-                }
-                .padding(.horizontal)
-                
-                // Кнопки соцсетей
-                HStack(spacing: 20) {
-                    Button(action: { /* Google auth */ }) {
-                        HStack {
-                            Image(systemName: "globe")
-                            Text("Google")
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red.opacity(0.8))
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                    }
-                    
-                    Button(action: { /* Apple ID auth */ }) {
-                        HStack {
-                            Image(systemName: "applelogo")
-                            Text("Apple")
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.black)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                    }
-                }
-                .padding(.horizontal)
+                NavigationLink(
+                    destination: Text("Главный экран (заглушка)"),
+                    isActive: $isLoggedIn
+                ) { EmptyView() }
                 
                 Spacer()
             }
-            .navigationBarHidden(true)
+            .padding()
         }
     }
-}
-
-#Preview {
-    AuthView()
 }

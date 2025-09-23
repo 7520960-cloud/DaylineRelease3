@@ -1,8 +1,14 @@
-platform :ios, '14.0'
+platform :ios, '17.0'
 
-use_frameworks! :linkage => :static
+use_frameworks!
+use_modular_headers!
 
 target 'DaylineApp' do
-  # Firebase Authentication
+  # Подключение Firebase Auth
   pod 'Firebase/Auth'
+
+  # Можно добавить и другие модули Firebase при необходимости:
+  # pod 'Firebase/Firestore'
+  # pod 'Firebase/Analytics'
+
 end

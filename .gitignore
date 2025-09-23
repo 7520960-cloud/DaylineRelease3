@@ -1,17 +1,20 @@
 # Xcode
 DerivedData/
 build/
+*.xcworkspace
+xcuserdata/
+.DS_Store
 
-# Pods
+# CocoaPods
 Pods/
 Podfile.lock
 
-# Swift Package Manager
+# SwiftPM
 .build/
 
-# Bitrise / Codemagic cache
+# Misc
 *.xcuserstate
 *.xcscmblueprint
 
-# User settings
-*.xcuserdata
+# Firebase (если добавишь позже)
+GoogleService-Info.plist

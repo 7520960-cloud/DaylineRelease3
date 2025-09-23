@@ -1,26 +1,27 @@
 format_version: "11"
-default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+default_step_lib_source: "https://github.com/bitrise-io/bitrise-steplib.git"
 
 workflows:
   run_tests:
     steps:
-    - git-clone: {}
-    - cache-pull: {}
-    - script:
-        title: Install Ruby gems from Gemfile
-        inputs:
-        - content: |-
-            #!/bin/bash
-            set -ex
-            gem install bundler
-            bundle install
-    - cocoapods-install:
-        inputs:
-        - command: install
-    - xcode-test:
-        inputs:
-        - project_path: Dayline.xcworkspace
-        - scheme: DaylineApp
-        - destination: "platform=iOS Simulator,name=Bitrise iOS default,OS=latest"
-    - cache-push: {}
-    - deploy-to-bitrise-io: {}
+      - git-clone@8: {}
+      - cache-pull@2: {}
+      - cocoapods-install@2: {}
+      - xcode-test@6:
+          inputs:
+            - project_path: "Dayline.xcworkspace"
+            - scheme: "DaylineApp"
+            - destination: "platform=iOS Simulator,name=iPhone 15,OS=latest"
+      - cache-push@2: {}
+
+  release_build:
+    steps:
+      - git-clone@8: {}
+      - cache-pull@2: {}
+      - cocoapods-install@2: {}
+      - xcode-archive@4:
+          inputs:
+            - project_path: "Dayline.xcworkspace"
+            - scheme: "DaylineApp"
+            - export_method: "app-store"
+      - deploy-to-bitrise-io@2: {}

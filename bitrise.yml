@@ -2,26 +2,46 @@ format_version: "11"
 default_step_lib_source: "https://github.com/bitrise-io/bitrise-steplib.git"
 
 workflows:
-  run_tests:
+  validate_build:
     steps:
-      - git-clone@8: {}
-      - cache-pull@2: {}
-      - cocoapods-install@2: {}
-      - xcode-test@6:
+      - git-clone: {}
+      - cache-pull: {}
+      - cocoapods-install:
+          inputs:
+            - command: install
+      - xcode-build:
           inputs:
             - project_path: "Dayline.xcworkspace"
             - scheme: "DaylineApp"
-            - destination: "platform=iOS Simulator,name=iPhone 15,OS=latest"
-      - cache-push@2: {}
+            - configuration: "Debug"
+            - destination: "platform=iOS Simulator,name=iPhone 15,OS=17.5"
+      - cache-push: {}
+
+  run_tests:
+    steps:
+      - git-clone: {}
+      - cache-pull: {}
+      - cocoapods-install:
+          inputs:
+            - command: install
+      - xcode-test:
+          inputs:
+            - project_path: "Dayline.xcworkspace"
+            - scheme: "DaylineApp"
+            - destination: "platform=iOS Simulator,name=iPhone 15,OS=17.5"
+      - cache-push: {}
 
   release_build:
     steps:
-      - git-clone@8: {}
-      - cache-pull@2: {}
-      - cocoapods-install@2: {}
-      - xcode-archive@4:
+      - git-clone: {}
+      - cache-pull: {}
+      - cocoapods-install:
+          inputs:
+            - command: install
+      - xcode-archive:
           inputs:
             - project_path: "Dayline.xcworkspace"
             - scheme: "DaylineApp"
-            - export_method: "app-store"
-      - deploy-to-bitrise-io@2: {}
+            - export_method: "development"
+      - cache-push: {}
+      - deploy-to-bitrise-io: {}

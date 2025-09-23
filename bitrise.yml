@@ -1,47 +1,30 @@
-format_version: "11"
-default_step_lib_source: "https://github.com/bitrise-io/bitrise-steplib.git"
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+project_type: ios
 
 workflows:
-  validate_build:
+  run_build:
     steps:
-      - git-clone: {}
-      - cache-pull: {}
-      - cocoapods-install:
+      - git-clone@8: {}
+      - restore-cocoapods-cache@1: {}
+      - restore-spm-cache@2: {}
+      - cocoapods-install@2:
           inputs:
-            - command: install
-      - xcode-build:
+            is_cache_disabled: true
+      - xcode-archive@4:
           inputs:
-            - project_path: "Dayline.xcworkspace"
-            - scheme: "DaylineApp"
-            - configuration: "Debug"
-            - destination: "platform=iOS Simulator,name=iPhone 15,OS=17.5"
-      - cache-push: {}
+            project_path: Dayline.xcworkspace
+            scheme: DaylineApp
+            configuration: Release
+            export_method: development
+            xcconfig_content: COMPILER_INDEX_STORE_ENABLE=NO
+      - save-cocoapods-cache@1: {}
+      - save-spm-cache@2: {}
+      - deploy-to-bitrise-io@2: {}
 
-  run_tests:
-    steps:
-      - git-clone: {}
-      - cache-pull: {}
-      - cocoapods-install:
-          inputs:
-            - command: install
-      - xcode-test:
-          inputs:
-            - project_path: "Dayline.xcworkspace"
-            - scheme: "DaylineApp"
-            - destination: "platform=iOS Simulator,name=iPhone 15,OS=17.5"
-      - cache-push: {}
-
-  release_build:
-    steps:
-      - git-clone: {}
-      - cache-pull: {}
-      - cocoapods-install:
-          inputs:
-            - command: install
-      - xcode-archive:
-          inputs:
-            - project_path: "Dayline.xcworkspace"
-            - scheme: "DaylineApp"
-            - export_method: "development"
-      - cache-push: {}
-      - deploy-to-bitrise-io: {}
+app:
+  envs:
+    - BITRISE_PROJECT_PATH: Dayline.xcworkspace
+    - BITRISE_SCHEME: DaylineApp
+    - BITRISE_EXPORT_METHOD: development

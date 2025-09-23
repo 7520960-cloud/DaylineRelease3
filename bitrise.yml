@@ -1,27 +1,18 @@
-format_version: "11"
+format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+project_type: ios
 
 workflows:
   run_build:
     steps:
-      - activate-ssh-key@4:
-          run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-      - git-clone@8: {}
-      - restore-cocoapods-cache@2: {}
-      - restore-spm-cache@1: {}
-      - cocoapods-install@2: {}
-      - xcode-archive@4:
+      - git-clone@8.0.0: {}
+      - cache-pull@2.1.10: {}
+      - cocoapods-install@2.4.2: {}
+      - xcode-archive@4.9.0:
           inputs:
-            - project_path: "Dayline.xcworkspace"
-            - scheme: "DaylineApp"
-            - configuration: "Release"
-            - export_method: "development"   # можно заменить на app-store для релиза
-      - save-cocoapods-cache@2: {}
-      - save-spm-cache@1: {}
-      - deploy-to-bitrise-io@2: {}
-
-app:
-  envs:
-    - BITRISE_PROJECT_PATH: "Dayline.xcworkspace"
-    - BITRISE_SCHEME: "DaylineApp"
-    - BITRISE_EXPORT_METHOD: "development"
+            - project_path: Dayline.xcworkspace
+            - scheme: DaylineApp
+            - export_method: app-store
+      - deploy-to-bitrise-io@2.1.0: {}
+      - cache-push@2.1.6: {}

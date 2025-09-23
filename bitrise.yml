@@ -1,7 +1,5 @@
-format_version: '11'
+format_version: "11"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
-
-project_type: ios
 
 workflows:
   primary:
@@ -10,17 +8,12 @@ workflows:
       - cache-pull@2: {}
       - cocoapods-install@2:
           inputs:
-            - verbose: 'true'
+            - podfile_path: "./Podfile"
       - xcode-build-for-simulator@0:
           inputs:
-            - project_path: Dayline.xcodeproj
-            - scheme: DaylineApp
-            - simulator_device: iPhone 15
-            - simulator_os_version: latest
-      - xcode-test@4:
-          inputs:
-            - project_path: Dayline.xcodeproj
-            - scheme: DaylineApp
-            - simulator_device: iPhone 15
-            - simulator_os_version: latest
+            - project_path: "Dayline.xcworkspace"
+            - scheme: "DaylineApp"
+            - destination: "platform=iOS Simulator,name=iPhone 11,OS=18.6"
+            - configuration: "Debug"
       - cache-push@2: {}
+      - deploy-to-bitrise-io@2: {}

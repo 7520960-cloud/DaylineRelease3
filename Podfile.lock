@@ -5,8 +5,10 @@ PODS:
   - Firebase/CoreOnly (11.15.0):
     - FirebaseCore (= 11.15.0)
   - FirebaseAuth (11.15.0):
-    - FirebaseAppCheckInterop (~> 11.15.0)
-    - FirebaseCore (~> 11.15.0)
+    - FirebaseCore (~> 11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 8.0)
+    - GoogleUtilities/Environment (~> 8.0)
+    - GTMSessionFetcher/Core (~> 3.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -14,16 +16,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Firebase
-    - FirebaseAppCheckInterop
     - FirebaseAuth
     - FirebaseCore
+    - GoogleUtilities
+    - GTMSessionFetcher
 
 SPEC CHECKSUMS:
-  Firebase: d4ff8e6b20cb2c357d5580a7f6f445f1a6f5b8c6
-  FirebaseAppCheckInterop: 013c298d9d2d7c30c2f8a1fa39c7b0dc0f67eb62
-  FirebaseAuth: 409e7d6a8c92d2a8979f9e6c9c8f2d9b55e4dcb8
-  FirebaseCore: 75a4c2a25f27cf40d73c2855cfb3d0d3f6a7275c
+  Firebase: 3d0e0b1f1f8431dfc6a7b9d64b705c0621f9fbb7
+  FirebaseAuth: b38a48d4b23b87dc29e5b7fd09eac87c6a1fbcf3
+  FirebaseCore: 2b30f112c2eabbb0b25c5cb9184160a95cace0bb
+  GoogleUtilities: 2a0eb4d2d8f63fa4d2fba8b58f1f3e3d04f40e0f
+  GTMSessionFetcher: 98fc02a802a4a3c1d5e431ec0bc922d3e9fc8f1b
 
-PODFILE CHECKSUM: 5b7d6f7e0a1e48dfaf7b47b81d7e0418ef7e2c68
+PODFILE CHECKSUM: 1f8eeb8adac6cf8941fbb6c8dce6ed7e2df0c68f
 
 COCOAPODS: 1.16.2

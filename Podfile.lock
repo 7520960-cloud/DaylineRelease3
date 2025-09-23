@@ -1,0 +1,29 @@
+PODS:
+  - Firebase/Auth (11.15.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 11.15.0)
+  - Firebase/CoreOnly (11.15.0):
+    - FirebaseCore (= 11.15.0)
+  - FirebaseAuth (11.15.0):
+    - FirebaseAppCheckInterop (~> 11.15.0)
+    - FirebaseCore (~> 11.15.0)
+
+DEPENDENCIES:
+  - Firebase/Auth
+
+SPEC REPOS:
+  trunk:
+    - Firebase
+    - FirebaseAppCheckInterop
+    - FirebaseAuth
+    - FirebaseCore
+
+SPEC CHECKSUMS:
+  Firebase: d4ff8e6b20cb2c357d5580a7f6f445f1a6f5b8c6
+  FirebaseAppCheckInterop: 013c298d9d2d7c30c2f8a1fa39c7b0dc0f67eb62
+  FirebaseAuth: 409e7d6a8c92d2a8979f9e6c9c8f2d9b55e4dcb8
+  FirebaseCore: 75a4c2a25f27cf40d73c2855cfb3d0d3f6a7275c
+
+PODFILE CHECKSUM: 5b7d6f7e0a1e48dfaf7b47b81d7e0418ef7e2c68
+
+COCOAPODS: 1.16.2

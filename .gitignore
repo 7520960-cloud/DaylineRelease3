@@ -4,20 +4,17 @@ build/
 *.xcworkspace
 xcuserdata/
 .DS_Store
-*.xcuserstate
-*.xcscmblueprint
 
 # CocoaPods
 Pods/
-# Коммитим lock-файл для воспроизводимых сборок
-# НЕ игнорируем Podfile.lock
+Podfile.lock
 
 # SwiftPM
 .build/
 
-# Firebase (секреты, добавишь позже)
-GoogleService-Info.plist
+# Misc
+*.xcuserstate
+*.xcscmblueprint
 
-# CI / Fastlane (если появится)
-fastlane/report.xml
-fastlane/test_output/
+# Firebase (если добавишь позже)
+GoogleService-Info.plist

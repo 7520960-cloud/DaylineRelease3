@@ -1,48 +1,26 @@
-format_version: "11"
-default_step_lib_source: "https://github.com/bitrise-io/bitrise-steplib.git"
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
-app:
-  envs:
-    # Собираем всегда через WORKSPACE (создаётся после pod install)
-    - BITRISE_PROJECT_PATH: "Dayline.xcworkspace"
-    - BITRISE_SCHEME: "DaylineApp"
+project_type: ios
 
 workflows:
   primary:
     steps:
       - git-clone@8: {}
       - cache-pull@2: {}
-
-      # Установка CocoaPods (создаст Pods/ и Dayline.xcworkspace)
       - cocoapods-install@2:
           inputs:
-            - podfile_path: "./Podfile"
-            - is_update: "true"
-            - verbose: "true"
-
-      # Сборка + тесты на симуляторе
-      - xcode-test@2:
-          inputs:
-            - project_path: "$BITRISE_PROJECT_PATH"
-            - scheme: "$BITRISE_SCHEME"
-            - simulator_device: "iPhone 14"
-            - simulator_os_version: "latest"
-            - is_clean_build: "yes"
-
-      - cache-push@2: {}
-
-  # Опционально: чистая сборка без тестов (если нужно)
-  build_only:
-    steps:
-      - git-clone@8: {}
-      - cocoapods-install@2:
-          inputs:
-            - podfile_path: "./Podfile"
-            - is_update: "true"
+            - verbose: 'true'
       - xcode-build-for-simulator@0:
           inputs:
-            - project_path: "$BITRISE_PROJECT_PATH"
-            - scheme: "$BITRISE_SCHEME"
-            - simulator_device: "iPhone 14"
-            - simulator_os_version: "latest"
-      - deploy-to-bitrise-io@2: {}
+            - project_path: Dayline.xcodeproj
+            - scheme: DaylineApp
+            - simulator_device: iPhone 15
+            - simulator_os_version: latest
+      - xcode-test@4:
+          inputs:
+            - project_path: Dayline.xcodeproj
+            - scheme: DaylineApp
+            - simulator_device: iPhone 15
+            - simulator_os_version: latest
+      - cache-push@2: {}
